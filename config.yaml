@@ -25,7 +25,7 @@ dataset_config:
 
 # 生成時の設定
 generate_config:
-  max_new_tokens: 50 # 生成するトークンの最大数
+  max_new_tokens: 100 # 生成するトークンの最大数
   no_repeat_ngram_size: 4 # 繰り返しの禁止
   do_sample: true # サンプリングを使用
   temperature: 0.2 # 温度
