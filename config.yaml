@@ -1,0 +1,37 @@
+# モデルの設定
+model_config:
+  model: "llm-jp/llm-jp-3-1.8b" # モデル名
+  model_kwargs:
+    device_map: "auto" # デバイスマップ
+    torch_dtype: "auto" # データ型
+    # 量子化設定
+    # quantization_config:"load_in_8bit" # 使用する場合にコメントを外す
+    # quantization_config:"load_in_4bit" # 使用する場合にコメントを外す
+  max_length: 512 # 入力トークンの最大長
+  batch_size: 4 # 学習時のバッチサイズ
+  learning_rate: 0.0002 # 学習率
+  epochs: 1 # エポック数
+  logging_steps: 1000 # ログの出力間隔
+  save_steps: 1000 # モデルの保存間隔
+  lora_config:
+    lora_r: 8 # LoRAの次元数
+    lora_alpha: 16 # LoRAのスケーリング係数
+    lora_dropout: 0.1 # LoRAのドロップアウト率
+
+# データセットの設定
+dataset_config:
+  name: "kunishou/databricks-dolly-15k-ja" # データセット名
+  test_size: 0.1 # テストデータの割合
+
+# 生成時の設定
+generate_config:
+  max_new_tokens: 50 # 生成するトークンの最大数
+  no_repeat_ngram_size: 4 # 繰り返しの禁止
+  do_sample: true # サンプリングを使用
+  temperature: 0.2 # 温度
+  top_p: 0.9 # トップP
+  num_beams: 1 # ビームサイズ
+
+# パス設定
+paths:
+  output_path: "./outputs" # 出力パス
